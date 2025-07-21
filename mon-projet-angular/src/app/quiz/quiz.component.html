@@ -1,0 +1,14 @@
+<div *ngIf="question">
+  <h2>{{ question.question }}</h2>
+  <ul>
+    <li *ngFor="let option of question.options; let i = index"
+        (click)="selectOption(i)"
+        [class.selected]="selectedOptionIndex === i"
+        style="cursor: pointer; padding: 5px; border: 1px solid #ccc; margin-bottom: 5px; border-radius: 4px;"
+        [style.backgroundColor]="selectedOptionIndex === i ? '#cce5ff' : 'transparent'">
+      {{ option }}
+    </li>
+  </ul>
+
+  <button (click)="submitAnswer()" [disabled]="selectedOptionIndex === null">Suivant</button>
+</div>
