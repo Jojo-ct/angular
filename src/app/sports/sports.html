@@ -1,0 +1,24 @@
+<div class="question-container">  
+  <h2>Question {{ quizService.index_question_courant + 1 }} / {{ quizService.questions.length }}</h2>  
+  <p class="question-text">  
+    {{ quizService.question_courant().text }}  
+  </p>    <form>  
+    <div *ngFor="let option of quizService.question_courant().options; let i = index">  
+      <label>  
+        <input  
+          type="radio"  
+          name="option"  
+          [value]="i"  
+          [(ngModel)]="selectedOption"  
+          (change)="onOptionSelected(i)"  
+        />  
+        {{ option }}  
+      </label>  
+    </div>  
+  </form>    <div class="navigation-buttons">  
+    <button (click)="prevQuestion()" [disabled]="quizService.index_question_courant === 0">Précédent</button>  <button (click)="nextOrFinish()">  
+  {{ quizService.isLastQuestion() ? 'Terminer' : 'Suivant' }}  
+</button>
+
+  </div>  
+</div>  
